@@ -1,41 +1,35 @@
-using System.Windows.Forms;
-
-namespace WinFormsApp2Option
+namespace WinFormsApp9Option
 {
     public partial class Form1 : Form
     {
-        List<CJobless> list;
+        List<CVlad> list;
         BindingSource bindingSource;
         public Form1()
         {
             InitializeComponent();
 
-            list = new List<CJobless>();
+            list = new List<CVlad>();
 
-            list.Add(new CJobless { JoblessID = 1, LastName = "Иванов", FirstName = "Иван", Age = 25 });
-            list.Add(new CJobless { JoblessID = 2, LastName = "Петров", FirstName = "Петр", Age = 30 });
-            list.Add(new CJobless { JoblessID = 3, LastName = "Сидоров", FirstName = "Семен", Age = 35 });
+            list.Add(new CVlad { FIO = "Иванов Иван Иванович", Phone = "1234567", Registr = 1 });
+            list.Add(new CVlad { FIO = "Петров Петр Петрович", Phone = "7654321", Registr = 2 });
+            list.Add(new CVlad { FIO = "Сидоров Сидор Сидорович", Phone = "4567892", Registr = 3 });
 
             bindingSource = new BindingSource();
             bindingSource.DataSource = list;
 
             dataGridView1.DataSource = bindingSource;
-
         }
-
-        public class CJobless
+        public class CVlad
         {
-            public int JoblessID { get; set; }
-            public string LastName { get; set; }
-            public string FirstName { get; set; }
-            public int Age { get; set; }
+            public string FIO { get; set; }
+            public string Phone { get; set; }
+            public int Registr { get; set; }
 
             public override string ToString()
             {
-                return LastName + " " + FirstName + ", " + Age;
+                return FIO + ", " + Phone + ", " + Registr;
             }
         }
-
         private void buttonClear_Click(object sender, EventArgs e)
         {
             list.Clear();
@@ -55,7 +49,6 @@ namespace WinFormsApp2Option
             {
                 MessageBox.Show("Данных нет");
             }
-
-        }    
+        }
     }
 }
